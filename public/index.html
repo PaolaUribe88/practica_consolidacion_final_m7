@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <!--FONT AWESOME-->
+    <script src="https://kit.fontawesome.com/a78a6c2788.js" crossorigin="anonymous"></script>
+    <style>
+      #mi_footer {   
+        border: 2px solid blueviolet;
+        background-image: linear-gradient(90deg, #f387ea 0%, #acf570 100%);
+      }
+      
+      .mifooter__eltextoreservado {
+        text-align: center;
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+        color: rgb(8, 8, 8);
+      }
+      </style>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+  <footer id="mi_footer" class="container">
+    <b> <p class="mifooter__eltextoreservado">TODOS LOS DERECHOS RESERVADOS ® J.U.</p> <!--&#174 codigo acci--> </b>    
+</footer>
+</html>
