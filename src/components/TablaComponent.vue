@@ -32,6 +32,123 @@
                 </thead>
             </table>           
         </div>
+        <!-- MODAL -->
+        <div>
+              <b-modal v-model="modalShow">             
+                <div>
+                    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+                       <!--Caja 1 texto-->
+                      <b-form-group
+                        id="input-group-1"
+                        label="Nombre del Curso:"
+                        label-for="input-1"
+                      >
+                        <b-form-input
+                          id="input-1"
+                          v-model="form.nombre"
+                          type="text"
+                          placeholder="Ingrese Nombre"
+                          required
+                        ></b-form-input>
+                      </b-form-group>
+                      <!--Caja 2 texto-->
+                      <b-form-group 
+                        id="input-group-2" 
+                        label="URL Imagen del Curso:" 
+                        label-for="input-2">
+                         
+                        <b-form-input
+                          id="input-2"
+                          v-model="form.img"
+                          placeholder="Ingrese URL imagen"
+                          required
+                        ></b-form-input>
+                      </b-form-group>
+                      <!--Caja 3 texto-->
+                      <b-form-group 
+                        id="input-group-3" 
+                        label="Cupos del Curso:" 
+                        label-for="input-3">
+                        <b-form-input
+                          id="input-3"
+                          type="number"
+                          v-model="form.cupos"
+                          placeholder="Ingrese cupos"
+                          required
+                        ></b-form-input>
+                      </b-form-group>
+                       <!--Caja 4 texto-->
+                      <b-form-group 
+                        id="input-group-4" 
+                        label="Inscritos en el Curso:" 
+                        label-for="input-4"
+                        >
+                        <b-form-input
+                          id="input-4"
+                          type="number"
+                          v-model="form.inscritos"
+                          placeholder="Ingrese inscritos"
+                          required
+                        ></b-form-input>                        
+                      </b-form-group>
+                        <!--Caja 5 texto-->
+                      <b-form-group 
+                        id="input-group-5" 
+                        label="Duración del Curso:" 
+                        label-for="input-5"
+                        >
+                        <b-form-input
+                          id="input-5"
+                          v-model="form.duracion"
+                          placeholder="Ingrese duración"
+                          required
+                        ></b-form-input>
+                      </b-form-group>
+                       <!--Caja 6 texto-->
+                      <b-form-group 
+                        id="input-group-6" 
+                        label="Fecha de Registro:" 
+                        label-for="input-6"
+                        >
+                        <b-form-input
+                          id="input-6"
+                          type="text"
+                          v-model="form.fecha_registro"
+                          placeholder="Ingrese fecha de registro"
+                          required
+                        ></b-form-input>
+                      </b-form-group>
+                       <!--Caja 7 texto-->
+                      <b-form-group 
+                        id="input-group-7" 
+                        label="Costo del Curso:" 
+                        label-for="input-7"
+                        >
+                        <b-form-input
+                          id="input-7"
+                          type="number"
+                          v-model="form.costo"
+                          placeholder="Ingrese costo"
+                          required
+                        ></b-form-input>
+                      </b-form-group>
+                       <!--Caja 8 textArea-->
+                      <b-form-textarea
+                        id="textarea"
+                        v-model="form.descripcion"
+                        placeholder="Descripción del Curso"
+                        rows="3"
+                        max-rows="6"
+                      ></b-form-textarea>
+                      <b-button type="submit" variant="warning">Cambiar Info</b-button>
+                      <b-button type="reset" variant="danger">Reset</b-button>
+                    </b-form>
+                    <b-card class="mt-3" header="Form Data Result">
+                      <pre class="m-0">{{ form }}</pre>
+                    </b-card>
+                </div>                       
+              </b-modal>
+            </div>
     </div>
   </template>
   
@@ -81,7 +198,7 @@
     methods:{
       ...mapActions('informacion_curso',['consultarDatosTabla', 'eliminarCurso', 'consultarCursosEditarCard', 'consultarCursosEditarTabla', 'editarDatosCard', 'editarDatosTabla']),
       eliminar:function(elid){
-        console.log('elid',elid);
+        
         let respuesta= confirm('¿Está seguro que desea eliminar el curso?');
           if(respuesta==true){
               this.eliminarCurso(elid);
@@ -104,7 +221,7 @@
           this.form_tabla.fecha=this.form.fecha_registro;
           this.form_tabla.descripcion=this.form.descripcion;
           this.$nextTick(() => {
-          console.log('onSubmit form_tabla', this.form_tabla );
+          
           this.editarDatosTabla(this.form_tabla);
         })
         // mostramos la tabla con los cambios
@@ -132,7 +249,7 @@
       },
 
       activarEditar(unid){
-        console.log('activareditar elid',unid);
+ 
         //ocultamos la tabla para hacer cambios
         this.$nextTick(() => {
           this.mostrarTabla = false;
@@ -174,6 +291,9 @@
 }
 #editar{
     color:rgb(236, 213, 44);
+}
+label{
+  font-weight: bolder;
 }
   
   </style>
